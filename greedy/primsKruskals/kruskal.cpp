@@ -1,11 +1,18 @@
-#include "DsetAndHeap.h"
+#include <iostream>
+#include "node.h"
+#include "graph.h"
+#include "heap.h"
+#include "disjointSet.h"
+
+
+using namespace std;
 int main() {
   //---------------Kruskals--------------//
   int noOfEdges=9;
   int noOfVertices=8;
   int totalCost=0;
   Heap h(noOfEdges,noOfVertices);
-  h.create_array();
+  h.create_array(0);
   h.heapify();
   DisJointSet d(noOfVertices);
   int i=noOfVertices-1;

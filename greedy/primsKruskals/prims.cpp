@@ -1,7 +1,13 @@
-#include "DsetAndHeap.h"
+#include <iostream>
+#include "node.h"
+#include "graph.h"
+#include "heap.h"
+#include "disjointSet.h"
+
 #define VISITED 9999
 #define HIPPED 999
 
+using namespace std;
 
 int main(){
   int noOfEdges=9;
