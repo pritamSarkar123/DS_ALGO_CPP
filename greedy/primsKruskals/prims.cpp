@@ -8,12 +8,12 @@ int main(){
   int noOfVertices=8;
   int totalCost=0;
   int startingVertex=1;
-  int loop=noOfVertices-1;
+  int i=noOfVertices-1;
   Node *n=NULL;
   Graph g;
   Heap h(noOfEdges,noOfVertices);
   DisJointSet d(noOfVertices);
-  while(loop){//we carry on the loop upto |V|-1 times
+  while(i>0){//we carry on the loop upto |V|-1 times
     for(int j=1;j<=noOfVertices;j++){ 
       //find for adjacent vertices , which are yet not visited and not hipped yet
       if(g.AdjGraph[startingVertex][j]!=0 
@@ -33,14 +33,14 @@ int main(){
       g.AdjGraph[n->v][n->u]=VISITED;
       //make the value at the coordinates "VISITED"
       startingVertex=n->v; //make the next starting vertex
-      loop--;
-      cout<<"---( u="<<n->u<<" v="<<n->v<<" weight="<<n->e<<" )---"<<endl;
-      cout<<"startingVertex="<<startingVertex<<endl;
+      i--;
+      cout<<n->u<<" "<<n->v<<endl;
+      //cout<<"startingVertex="<<startingVertex<<endl;
     }
     else{
-      cout<<"---( u="<<n->u<<" v="<<n->v<<" weight="<<n->e<<" )--- forms cycle"<<endl;
-    }    
-    cout<<"Total cost="<<totalCost<<endl;
+      cout<<n->u<<" "<<n->v<<" forming cycle"<<endl;
+    }
   } 
+  cout<<"Total cost="<<totalCost<<endl;
   return 0;
 }
