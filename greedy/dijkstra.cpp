@@ -19,10 +19,11 @@ void Dijkstra(int s){
     int startNode=s;
     int shortestPath[noOfNodes+1]={0};
     int costs[noOfNodes+1]={0};
-    NodeWeight[s]=0;Visited[s]=1;
+    NodeWeight[s]=0;
     int k=1;
     int minVal,minNode;
     while(k<noOfNodes){
+        Visited[s]=1;
         minVal=INF;minNode=0;
         for(int i=1;i<=noOfNodes;i++){
             if(graph[s][i]!=INF && graph[s][i]!=0 && Visited[i]==-1){//if not visited yet, not self loop, not unreachable
@@ -38,7 +39,7 @@ void Dijkstra(int s){
         cout<<"From "<<s<<" to "<<minNode<<" cost = "<<NodeWeight[minNode]<<endl;
         shortestPath[s]=minNode;
         costs[minNode]=NodeWeight[minNode];
-        s=minNode;Visited[s]=1;
+        s=minNode;
         k++;
     }
     //----------------------------------
