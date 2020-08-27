@@ -38,7 +38,7 @@ void Dijkstra(int s){
         cout<<"From "<<s<<" to "<<minNode<<" cost = "<<NodeWeight[minNode]<<endl;
         shortestPath[s]=minNode;
         costs[minNode]=NodeWeight[minNode];
-        s=minNode;
+        s=minNode;Visited[s]=1;
         k++;
     }
     //----------------------------------
