@@ -36,6 +36,8 @@ int main() {
     else{
       cout<<n->u<<" "<<n->v<<" forming cycle"<<endl;
     }
+    delete n;
+    n=NULL;
   }
   cout<<"Total cost="<<totalCost<<endl;
   return 0;
