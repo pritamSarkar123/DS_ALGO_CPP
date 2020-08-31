@@ -60,7 +60,7 @@ int Hashing::getPrime(int x){
 void Hashing::adjustHashing(){
   int oldTableSize=tableSize;
   int x,y,j;
-	if(elementCount>(tableSize/2)){
+	if(elementCount>(tableSize/2)){//rehashing everything if no of elementCount> tableSize/2 table size become double
     tableSize*=2;
     Prime=getPrime(tableSize);
 		Node **NewTable=new Node*[tableSize];
