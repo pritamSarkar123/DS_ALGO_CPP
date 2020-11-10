@@ -1,0 +1,65 @@
+#include <iostream>
+#include<vector>
+using namespace std;
+//Problem:- finding cycle in directed graph
+//https://www.youtube.com/watch?v=rKQaZuoUR4M&t=361s
+//O(V+E)
+//white->gray->black
+vector<vector<int>> graph={
+    {0,0,0,0,0,0,0},
+    {0,0,1,1,0,0,0},
+    {0,0,0,1,0,0,0},
+    {0,0,0,0,0,0,0},
+    {0,0,0,0,0,1,0},
+    {0,0,0,0,0,0,1},
+    {0,0,0,0,1,0,0}
+};
+
+vector<int> white,gray,black,parent,visited;
+void fillValues(){ //O(V)
+    for(int i=0;i<graph.size();i++){
+        white.push_back(1);
+        gray.push_back(-1);
+        black.push_back(-1);
+        parent.push_back(-1);
+    }
+}
+bool isCyclePresent(int s){
+    if(gray[s]==1){
+        //already in gray list
+        return true;
+    }
+    else{
+        gray[s]=1;
+        white[s]=-1;
+        for(int i=1;i<graph.size();i++){
+            if(graph[s][i]!=0 && black[i]==-1){
+                parent[i]=s;
+                if(isCyclePresent(i)){
+                    return true;
+                }
+            }
+        }
+        gray[s]=-1;
+        black[s]=1;
+        return false;
+    }
+}
+void function(){
+    fillValues();
+	for(int i=1;i<graph.size();i++){//O(V+E) and recurssion
+        if(black[i]==-1){
+            parent[i]=1;
+	        if(isCyclePresent(i)){
+	            cout<<"loop present"<<endl;
+	            return;
+	        }
+        }
+    }
+    cout<<"loop not present"<<endl;
+}
+int main() {
+    
+	function();
+	return 0;
+}
