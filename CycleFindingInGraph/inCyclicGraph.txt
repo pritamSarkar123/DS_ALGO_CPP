@@ -49,7 +49,7 @@ void function(){
     fillValues();
 	for(int i=1;i<graph.size();i++){//O(V+E) and recurssion
         if(black[i]==-1){
-            parent[i]=1;
+            parent[i]=i;
 	        if(isCyclePresent(i)){
 	            cout<<"loop present"<<endl;
 	            return;
